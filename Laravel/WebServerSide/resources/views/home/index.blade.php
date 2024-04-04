@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.fe')
+@section('title')
+    <title>HomePage</title>
+@endsection
+@section('content')
+    <h1>Olá, estou em casa!</h1>
 
-    <h4>Olá, estou em casa!</h4>
+    <img src="{{asset ('img/luffy_yo.jpg')}}" alt="">
 
     <ul>
+
         <a href="{{route ('home.welcome') }}">
             <li>Welcome</li>
         </a>
         <a href="{{route ('home.hello') }}">
             <li>Hello</li>
         </a>
-        <a href="{{route ('home.users')}}">
+        <a href="{{route ('users.all') }}">
             <li>Users</li>
         </a>
 
     </ul>
 
-</body>
-</html>
+
+
+@endsection
+
+@section('content2')
+    giehrfpuihtegi
+@endsection
