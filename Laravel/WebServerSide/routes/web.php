@@ -19,18 +19,35 @@ Route::get('/hello/{name}', function ($name) {
 Route::get('/home', [IndexController::class,'homePage'] )
     ->name('homenomedarotaparachamarno');
 
-//rota ir para users
-Route::get('/users', [UserController::class, 'usersAll'] )
-    ->name('users.all');
+//----------------------------------------------------------
 
 //rota ir para hello
 Route::get('/hello', [IndexController::class,'helloWorld'] )
     ->name('home.hello');
 
+//----------------------------------------------------------
+
 //rota ir para tasks
-Route::get('/tasks', function () {
-        return view('tasks.all_tasks');
-    })->name('tasks.all');
+Route::get('/tasks', [UserController::class, 'viewAllTasks']
+    )->name('tasks.all');
+
+
+
+//----------------------------------------------------------
+
+//rota ir para users
+Route::get('/users', [UserController::class, 'usersAll'] )
+    ->name('users.all');
+
+//rota ir para user
+Route::get('/add-user', [UserController::class, 'addUser'] )
+    ->name('users.add');
+
+//rota ir para user
+Route::get('/user', [UserController::class, 'viewUser'] )
+->name('users.view');
+
+//----------------------------------------------------------
 
 
 Route::get('/hello/{name}', function ($name) {

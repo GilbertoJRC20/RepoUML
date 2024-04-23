@@ -24,6 +24,10 @@
             <li>Tasks</li>
         </a>
 
+        <a href="{{ route ('users.view') }}">
+            <li>User</li>
+        </a>
+
     </ul>
 
     <hr>
