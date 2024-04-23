@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\TasksController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view ('welcome');
@@ -28,10 +30,8 @@ Route::get('/hello', [IndexController::class,'helloWorld'] )
 //----------------------------------------------------------
 
 //rota ir para tasks
-Route::get('/tasks', [UserController::class, 'viewAllTasks']
-    )->name('tasks.all');
-
-
+Route::get('/tasks', [TasksController::class, 'viewAllTasks'] )
+    ->name('tasks.all');
 
 //----------------------------------------------------------
 
@@ -44,8 +44,12 @@ Route::get('/add-user', [UserController::class, 'addUser'] )
     ->name('users.add');
 
 //rota ir para user
-Route::get('/user', [UserController::class, 'viewUser'] )
+Route::get('/user/{id}', [UserController::class, 'viewUser'] )
 ->name('users.view');
+
+//rota ir para apagar user
+Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'] )
+->name('users.delete');
 
 //----------------------------------------------------------
 
