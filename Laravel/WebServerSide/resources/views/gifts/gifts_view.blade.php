@@ -2,7 +2,16 @@
 
 
 @section('content')
-<h1>Olá, sou um user</h1>
+<h1>Olá, aqui está uma prenda</h1>
+
+
+
+<h3>Gift: {{$gifts-> name}}</h3>
+<h3>User: {{$gifts-> usname}}</h3>
+<h3>Description: {{$gifts-> description}}</h3>
+<h3>Spent: {{$gifts-> spent_value}}</h3>
+
+
 
 
 
@@ -10,4 +19,3 @@
 <img src="{{asset ('img/GokuIT.jpg.jpg')}}" alt="">
 
 @endsection
-

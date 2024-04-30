@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\GiftsController;
+
 use App\Http\Controllers\TasksController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -39,11 +41,11 @@ Route::get('/tasks', [TasksController::class, 'viewAllTasks'] )
 Route::get('/users', [UserController::class, 'usersAll'] )
     ->name('users.all');
 
-//rota ir para user
+//rota para adicionar user
 Route::get('/add-user', [UserController::class, 'addUser'] )
     ->name('users.add');
 
-//rota ir para user
+//rota ir para ver user
 Route::get('/user/{id}', [UserController::class, 'viewUser'] )
 ->name('users.view');
 
@@ -53,6 +55,25 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'] )
 
 //----------------------------------------------------------
 
+//rota ir para gifts
+Route::get('/gifts', [GiftsController::class, 'allGifts'] )
+    ->name('gifts.all');
+
+//rota ir para adicionar gifts
+Route::get('/add-gifts', [GiftsController::class, 'addGifts'] )
+    ->name('gifts.add');
+
+
+//rota ir para ver gifts
+Route::get('/gift/{id}', [GiftsController::class, 'getEachGift'] )
+    ->name('gifts.view');
+
+
+//rota ir para apagar gifts
+Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'] )
+    ->name('gifts.delete');
+
+//----------------------------------------------------------
 
 Route::get('/hello/{name}', function ($name) {
         return '<h2>Olá '.$name.'</h2>';

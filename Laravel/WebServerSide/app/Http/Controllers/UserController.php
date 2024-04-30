@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class UserController extends Controller
 {
     public function usersAll() {
@@ -12,8 +13,9 @@ class UserController extends Controller
         $allUsers = $this -> getUsers();
 
         $delegadoTurma = DB::table('users')
-        ->where ('name', 'Liliana')->first();
-
+                        ->where('id', 1)
+                        ->where('name', 'Sara')
+                        ->first();
         //dd ($allusers);
         return view ('users.all_users', compact ('cesaeInfo', 'allUsers',
     'delegadoTurma'));
@@ -78,5 +80,8 @@ class UserController extends Controller
         return $users;
 
     }
+
+
+
 }
 

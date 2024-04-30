@@ -10,18 +10,22 @@
 
     <ul>
 
-        <a href="{{route ('home.welcome') }}">
+        <a href="{{ route ('home.welcome') }}">
             <li>Welcome</li>
         </a>
-        <a href="{{route ('home.hello') }}">
+        <a href="{{ route ('home.hello') }}">
             <li>Hello</li>
         </a>
-        <a href="{{route ('users.all') }}">
+        <a href="{{ route ('users.all') }}">
             <li>Users</li>
         </a>
 
         <a href="{{ route ('tasks.all') }}">
             <li>Tasks</li>
+        </a>
+
+        <a href="{{ route ('gifts.all') }}">
+            <li>Gifts</li>
         </a>
 
     </ul>
