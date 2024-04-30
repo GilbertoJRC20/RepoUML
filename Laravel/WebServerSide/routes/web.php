@@ -62,10 +62,6 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'] )
 Route::post('/create-user', [UserController::class, 'createUser'] )
 ->name('users.create');
 
-//rota ir para adicionar uma nova tarefa
-Route::post('/create-user', [UserController::class, 'createUser'] )
-->name('users.create');
-
 //----------------------------------------------------------
 
 //rota ir para gifts
