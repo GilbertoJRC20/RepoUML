@@ -21,7 +21,7 @@ class GiftsController extends Controller
     public function viewGifts($id) {
         //dd($id);
 
-        return view('gifts.gifts_view');
+        return view('gifts.view');
     }
 
 
@@ -36,14 +36,18 @@ class GiftsController extends Controller
 
     public function getEachGift($id) {
 
+
+
         $gifts = DB::table('gifts')
-        ->select('gifts.*', 'users.name as user_id')
-        ->join('users', 'users.id', '=', 'gift.user_id')
+        ->select('gifts.*', 'users.name as user_name')
+        ->join('users', 'users.name', '=', 'gifts.user_id')
+        ->where('gifts.id', $id)
         ->get();
+
+
 
         return $gifts;
     }
-
 
     protected function getAllGifts() {
 
@@ -54,4 +58,6 @@ class GiftsController extends Controller
         return $gifts;
 
     }
+
+
 }

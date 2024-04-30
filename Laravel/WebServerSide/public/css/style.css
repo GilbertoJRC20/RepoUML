@@ -2,3 +2,15 @@
 {
     background-color: brown;
 }
+
+.form-label {
+    color: white;
+}
+
+.form-check-label {
+    color: white;
+}
+
+#emailHelp {
+    color: white;
+}

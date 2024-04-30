@@ -27,6 +27,7 @@
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
             <th scope="col">User ID</th>
+            {{-- <td><a href="{{route('users')}}" class="btn btn-success">Adicionar Tarefa</a></td> --}}
           </tr>
 
         </thead>
@@ -49,6 +50,44 @@
             @endforeach
         </tbody>
       </table>
+
+
+      <h5>Add New Task</h5>
+      <form method="POST" action="{{ route('users.create') }}">
+          @csrf
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Task Name</label>
+              <input name="name" value="" type="text" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp">
+              @error('name')
+                  erro de name
+              @enderror
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Task Description</label>
+              <input name="task_description" value="" type="text" class="form-control" id="exampleInputEmail1"
+                  aria-describedby="emailHelp">
+              @error('email')
+                  erro de email
+              @enderror
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input name="password" value="" type="password" class="form-control" id="exampleInputPassword1">
+              @error('password')
+                  erro de password
+              @enderror
+          </div>
+          <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save New Task</button>
+      </form>
+
+      <br><br>
 
     <h4> Carrega <a href="{{route ('homenomedarotaparachamarno')}}">aqui</a> para ires para casa, que o teu mal é sono</h4>
     <img src="{{asset ('img/GokuIT.jpg.jpg')}}" alt="">

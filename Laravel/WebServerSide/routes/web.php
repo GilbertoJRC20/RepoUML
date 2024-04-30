@@ -35,6 +35,11 @@ Route::get('/hello', [IndexController::class,'helloWorld'] )
 Route::get('/tasks', [TasksController::class, 'viewAllTasks'] )
     ->name('tasks.all');
 
+//rota ir para adicionar uma nova tarefa
+Route::post('/add-task', [UserController::class, 'addNewTask'] )
+->name('tasks.add_new');
+
+
 //----------------------------------------------------------
 
 //rota ir para users
@@ -52,6 +57,14 @@ Route::get('/user/{id}', [UserController::class, 'viewUser'] )
 //rota ir para apagar user
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'] )
 ->name('users.delete');
+
+//rota ir para criar um novo user
+Route::post('/create-user', [UserController::class, 'createUser'] )
+->name('users.create');
+
+//rota ir para adicionar uma nova tarefa
+Route::post('/create-user', [UserController::class, 'createUser'] )
+->name('users.create');
 
 //----------------------------------------------------------
 

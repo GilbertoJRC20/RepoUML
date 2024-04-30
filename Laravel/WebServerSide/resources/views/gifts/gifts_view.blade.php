@@ -7,7 +7,7 @@
 
 
 <h3>Gift: {{$gifts-> name}}</h3>
-<h3>User: {{$gifts-> usname}}</h3>
+<h3>User: {{$gifts-> user_name}}</h3>
 <h3>Description: {{$gifts-> description}}</h3>
 <h3>Spent: {{$gifts-> spent_value}}</h3>
 

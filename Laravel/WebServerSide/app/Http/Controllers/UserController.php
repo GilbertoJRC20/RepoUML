@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -50,6 +52,27 @@ class UserController extends Controller
             'password'=> 123456,
             'updated_at'=>now()
         ]);
+    }
+
+
+    public function createUser(Request $request) {
+
+        $request->validate([
+            'name' => 'string|max:25',
+            'email' => 'email|unique:users',
+            'password' => 'required|min:5'
+        ]);
+
+
+        User::insert ([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->back()->with('message', 'User adicionado com Sucesso');
+    //dd($request->all());
+
     }
 
 
