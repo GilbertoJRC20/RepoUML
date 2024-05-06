@@ -49,7 +49,7 @@ class GiftController extends Controller
 
         return $gifts;
     }
-    
+
 
 
 
