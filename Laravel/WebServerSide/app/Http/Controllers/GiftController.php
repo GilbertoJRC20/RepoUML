@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use function Laravel\Prompts\select;
 
-class GiftsController extends Controller
+class GiftController extends Controller
 {
 
     public function allGifts() {
@@ -21,7 +21,8 @@ class GiftsController extends Controller
     public function viewGifts($id) {
         //dd($id);
 
-        return view('gifts.view');
+
+        return view('gifts.view', compact ('gifts'));
     }
 
 
@@ -42,17 +43,20 @@ class GiftsController extends Controller
         ->select('gifts.*', 'users.name as user_name')
         ->join('users', 'users.name', '=', 'gifts.user_id')
         ->where('gifts.id', $id)
-        ->get();
+        ->first();
 
 
 
         return $gifts;
     }
+    
+
+
 
     protected function getAllGifts() {
 
         $gifts = DB:: table('gifts')
-                -> get();
+            -> get();
 
 
         return $gifts;

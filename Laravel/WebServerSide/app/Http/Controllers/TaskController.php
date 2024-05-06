@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class TasksController extends Controller
+class TaskController extends Controller
 {
     public function viewAllTasks() {
         $allTasks = $this->getAllTasks();
