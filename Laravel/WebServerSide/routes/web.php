@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\TaskController;
+use App\Models\Task;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -31,13 +32,18 @@ Route::get('/hello', [IndexController::class,'helloWorld'] )
 //----------------------------------------------------------
 
 //rota ir para tasks
-Route::get('/tasks', [TaskController::class, 'viewAllTasks'] )
+Route::get('/tasks', [TaskController::class, 'allTasks'] )
     ->name('tasks.all');
 
 //rota ir para adicionar uma nova tarefa
-Route::post('/add-task', [UserController::class, 'addNewTask'] )
+Route::get('/add-task', [TaskController::class, 'addNewTask'] )
 ->name('tasks.add_new');
 
+Route::get('/task/{id}', [TaskController::class, 'editTask'])
+->name('tasks.edit');
+
+Route::post('/create-task', [TaskController::class, 'createTask'])
+->name('tasks.create');
 
 //----------------------------------------------------------
 

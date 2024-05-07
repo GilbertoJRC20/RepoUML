@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function usersAll() {
+
         $cesaeInfo = $this -> getCesaeInfo();
         $allUsers = $this -> getUsers();
 
@@ -18,15 +19,19 @@ class UserController extends Controller
                         ->where('id', 1)
                         ->where('name', 'Sara')
                         ->first();
-        //dd ($allusers);
+
+                        //dd ($allusers);
         return view ('users.all_users', compact ('cesaeInfo', 'allUsers',
     'delegadoTurma'));
     }
 
 
     public function viewUser($id){
+        $user = DB::table('users')->where('id', $id)
+        ->first();
         //dd($id);
-        return view('users.user_view');
+
+        return view('users.user_view', compact('user'));
     }
 
 
@@ -55,28 +60,6 @@ class UserController extends Controller
     }
 
 
-    public function createUser(Request $request) {
-
-        $request->validate([
-            'name' => 'string|max:25',
-            'email' => 'email|unique:users',
-            'password' => 'required|min:5'
-        ]);
-
-
-        User::insert ([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->back()->with('message', 'User adicionado com Sucesso');
-    //dd($request->all());
-
-    }
-
-
-
 
     protected function getCesaeInfo() {
         $cesaeInfo = [
@@ -97,8 +80,7 @@ class UserController extends Controller
             ['id' => 5, 'name' => 'Filipe', 'phone' => '912223333']
         ];*/
 
-        $users = DB:: table('users')
-                -> get();
+        $users = User::all();
 
         //dd($users);
 
@@ -107,6 +89,48 @@ class UserController extends Controller
     }
 
 
+
+
+    public function createUser(Request $request) {
+
+        if(isset($request->id)) {
+            $request->validate([
+                'name' => 'string|max:25',
+                'address' => 'string',
+                'zip_code' => 'string',
+            ]);
+
+            User::where('id', $request->id)
+            ->update([
+                'name' => $request->name,
+                'address' => $request->address,
+                'zip_code' => $request->zip_code,
+            ]);
+
+            return redirect()->route('users.all')->with('message', 'User atualizado com sucesso!');
+
+        } else {
+
+            $request->validate([
+                'name' => 'string|max:25',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|min:5'
+            ]);
+
+
+            User::insert ([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            return redirect()->back()->with('message', 'User adicionado com Sucesso');
+            //dd($request->all());
+        }
+
+
+
+    }
 
 }
 

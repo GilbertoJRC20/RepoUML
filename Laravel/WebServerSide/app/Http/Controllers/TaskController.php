@@ -9,38 +9,63 @@ use Illuminate\Support\Facades\Hash;
 
 class TaskController extends Controller
 {
-    public function viewAllTasks() {
-        $allTasks = $this->getAllTasks();
+    public function allTasks() {
+
+        $tasks = $this->getAllTasks();
         //dd($allTasks);
-        return view('tasks.all_tasks', compact('allTasks'));
+
+        return view('tasks.all_tasks', compact('tasks'));
+    }
+
+    protected function getAllTasks() {
+        $tasks = DB::table('tasks')
+        ->select('tasks.*', 'users.name as usname')
+        ->join('users', 'users.id', '=', 'tasks.user_id')
+        ->get();
+
+        //dd($tasks);
+
+        return $tasks;
+    }
+
+
+    public function addTask(){
+        $users = DB::table('users')
+        ->get();
+
+        return view ('tasks.add_new', compact('users'));
     }
 
     public function addNewTask(Request $request) {
 
         $request->validate([
-            'name' => 'string|max:50',
-            'task_description' => 'string|max:255',
+            'name' => 'string|max:20',
+            'task_description' => 'required|string|max:255',
             'users_id' => 'required|min:5'
         ]);
 
 
-        Task::insert ([
+        DB::table('tasks')->insert ([
             'name' => $request->name,
             'task_description' => $request->task_description,
-            'users_id' => Hash::make($request->password),
+            'users_id' => $request->user_id,
         ]);
 
-        return redirect()->back()->with('message', 'User adicionado com Sucesso');
+        return redirect()-> route('tasks.all')->with('message', 'Tarefa adicionada com sucesso!');
     //dd($request->all());
 
     }
 
+    public function editTask($id) {
+        $task = DB::table('tasks')
+        ->where('id', $id)
+        ->first();
 
-    protected function getAllTasks() {
-        $allTasks = DB::table('tasks')
-        ->select('tasks.*', 'users.name as usname')
-        ->join('users', 'users.id', '=', 'tasks.user_id')
+        $allUsers = DB::table('users')
         ->get();
-        return $allTasks;
+
+        return view('tasks.edit', compact('task', 'allUsers'));
     }
+
 }
+
