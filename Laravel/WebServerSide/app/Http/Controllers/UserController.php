@@ -10,9 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function usersAll() {
 
-        $cesaeInfo = $this -> getCesaeInfo();
+    /**$cesaeInfo = $this -> getCesaeInfo();
         $allUsers = $this -> getUsers();
 
         $delegadoTurma = DB::table('users')
@@ -22,8 +21,26 @@ class UserController extends Controller
 
                         //dd ($allusers);
         return view ('users.all_users', compact ('cesaeInfo', 'allUsers',
-    'delegadoTurma'));
+    'delegadoTurma'));*/
+    public function usersAll() {
+
+    $search = request()->query('search')?request()->query('search'):null;
+
+    if( $search ) {
+        $allUsers = DB::table('users')
+        ->where('name', 'LIKE', "%{search}%")
+        ->get();
+    } else {
+        $allUsers = DB::table('users')
+        ->get();
     }
+
+    return view ('users.all_users' , compact('allUsers'));
+
+    }
+
+
+
 
 
     public function viewUser($id){
@@ -64,7 +81,7 @@ class UserController extends Controller
     protected function getCesaeInfo() {
         $cesaeInfo = [
             'name' => 'Cesae',
-            'adress' => 'Rua Ciríaco Cardoso 186, 4150-212 Porto',
+            'address' => 'Rua Ciríaco Cardoso 186, 4150-212 Porto',
             'email' => 'cesae@cesae.pt'
         ];
 

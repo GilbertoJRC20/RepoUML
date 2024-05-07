@@ -17,7 +17,7 @@
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Descrição</label>
         <input name="task_description" value="" type="text" class="form-control" id="exampleInputPassword1">
-        @error('email')
+        @error('task_description')
             description inválida
         @enderror
 
@@ -30,7 +30,7 @@
           @endforeach
         </select>
 
-        @error('password')
+        @error('user_id')
             user_id inválido
         @enderror
 

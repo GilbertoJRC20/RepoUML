@@ -11,6 +11,13 @@
 
     {{ $cesaeInfo['name'] }} --}}
 
+
+    <form action="">
+        <input type="text" name="search" value=" {{ request->query('search') }} ">
+        <button class="btn btn-info">Procurar</button>
+    </form>
+
+
     @if (session('message'))
     <div class="alert alert-success">
         {{session('message')}}
@@ -78,7 +85,7 @@
                   erro de password
               @enderror
           </div>
-          
+
           <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>

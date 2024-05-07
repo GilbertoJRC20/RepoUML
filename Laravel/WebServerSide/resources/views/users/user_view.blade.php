@@ -22,7 +22,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email Adress</label>
+        <label for="exampleInputEmail1" class="form-label">Email Address</label>
         <input readonly name="email" value="{{ $user->email}}" type="email" class="form-control"
         id="exampleInputEmail1" aria-describedby="emailHelp">
         @error('email')
