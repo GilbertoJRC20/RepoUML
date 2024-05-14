@@ -38,22 +38,40 @@ class TaskController extends Controller
 
     public function addNewTask(Request $request) {
 
-        $request->validate([
-            'name' => 'string|max:20',
-            'task_description' => 'required|string|max:255',
-            'users_id' => 'required|min:5'
-        ]);
+        //if has an id, its an update
+        if(isset($request->id)){
+            $request -> validate ([
+                'name' => 'required|string|max:20',
+                'description' => 'required|string\max:255',
+                'due_at' => 'date',
+            ]);
+
+            db::table('tasks')->where('id', $request->id)->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'due_at' => $request->due_at,
+            ]);
+            return redirect()->route('tasks.all')->with('message', 'Tarefa actualizada com sucesso!');
+
+        } else {
+
+            $request->validate([
+                'name' => 'string|max:20',
+                'task_description' => 'required|string|max:255',
+                'users_id' => 'required|min:5'
+            ]);
 
 
-        DB::table('tasks')->insert ([
-            'name' => $request->name,
-            'task_description' => $request->task_description,
-            'users_id' => $request->user_id,
-        ]);
+            DB::table('tasks')->insert ([
+                'name' => $request->name,
+                'task_description' => $request->task_description,
+                'users_id' => $request->user_id,
+            ]);
 
-        return redirect()-> route('tasks.all')->with('message', 'Tarefa adicionada com sucesso!');
-    //dd($request->all());
+            return redirect()-> route('tasks.all')->with('message', 'Tarefa adicionada com sucesso!');
+            //dd($request->all());
 
+        }
     }
 
     public function editTask($id) {
@@ -68,4 +86,3 @@ class TaskController extends Controller
     }
 
 }
-

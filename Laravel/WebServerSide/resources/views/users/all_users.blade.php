@@ -13,7 +13,7 @@
 
 
     <form action="">
-        <input type="text" name="search" value=" {{ request->query('search') }} ">
+        <input type="text" name="search" value=" {{ request()->query('search') }}">
         <button class="btn btn-info">Procurar</button>
     </form>
 

@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\Task;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\GiftController;
 use App\Http\Controllers\TaskController;
-use App\Models\Task;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -88,6 +89,14 @@ Route::get('/delete-gifts/{id}', [GiftController::class, 'deleteGifts'] )
     ->name('gifts.delete');
 
 //----------------------------------------------------------
+
+//dota ir para dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'] )
+    ->name('dashboard');
+
+
+//----------------------------------------------------------
+
 
 Route::get('/hello/{name}', function ($name) {
         return '<h2>Olá '.$name.'</h2>';

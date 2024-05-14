@@ -22,13 +22,31 @@ class UserController extends Controller
                         //dd ($allusers);
         return view ('users.all_users', compact ('cesaeInfo', 'allUsers',
     'delegadoTurma'));*/
+
+
+
+    //sem ternário
+    /*$search = null;
+
+    if(request()->query('search')){
+        $search = request()->query('search');
+    }else{
+        $search = null;
+    }*/
+
+
+
     public function usersAll() {
+
+
+    $admin = User::TYPE_ADMIN;
 
     $search = request()->query('search')?request()->query('search'):null;
 
     if( $search ) {
         $allUsers = DB::table('users')
         ->where('name', 'LIKE', "%{search}%")
+        ->orWhere('email', 'LIKE', "%{$search}%")
         ->get();
     } else {
         $allUsers = DB::table('users')
@@ -64,16 +82,18 @@ class UserController extends Controller
 
     public function addUser(){
 
-        DB:: table('users')
+        /*DB:: table('users')
         -> updateOrInsert(
             [
-            'name'=> 'Sara',
+            'email' => 'Sara@gmail.com',
             ],
             [
-            'email' => 'Sara@gmail.com',
+            'name'=> 'Sara',
             'password'=> 123456,
             'updated_at'=>now()
-        ]);
+        ]);*/
+
+        return view('users.create_user');
     }
 
 
@@ -113,7 +133,7 @@ class UserController extends Controller
         if(isset($request->id)) {
             $request->validate([
                 'name' => 'string|max:25',
-                'address' => 'string',
+                'address' => 'string|max:255',
                 'zip_code' => 'string',
             ]);
 

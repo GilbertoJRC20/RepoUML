@@ -11,16 +11,15 @@
     <h1>Tasks</h1>
 
 @if (session('message'))
-<div class="alert alert-success">
-    {{ session('message') }}
-</div>
-
+    <div class="alert alert-success">
+        {{ session ('message') }}
+    </div>
 @endif
 
 @if (session('error'))
-<div class="alert alert-danger">
-    {{ session('error') }}
-</div>
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
 @endif
 
     <ol>
@@ -52,7 +51,7 @@
             <td>{{ $key->name }}</td>
             <td>{{ $key->usname }}</td>
             <td>{{ $key->description }}</td>
-            <td><a class="btn btn-info" href="">Ver / Editar</a></td>
+            <td><a class="btn btn-info" href="{{route('tasks.edit',$key->id )}}">Ver / Editar</a></td>
           </tr>
 
             @endforeach
