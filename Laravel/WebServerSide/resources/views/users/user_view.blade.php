@@ -6,7 +6,7 @@
 
 
 
-<form method="POST" action="{{ route ('users.create') }}">
+<form method="POST" action="{{ route ('users.create') }}" enctype="multipart/form-data">
     @csrf
 
     <input type="hidden" name="id" value="{{ $user->id }}">
@@ -53,6 +53,10 @@
         @error('zip_code')
             erro de name
         @enderror
+    </div>
+
+    <div>
+        <input type="file" name = "photo" accept="image/*" id = "">
     </div>
 
     <button type="submit" class="btn btn-primary">Update User</button>
