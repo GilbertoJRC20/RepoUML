@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('gifts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreign('user_id')->references('name')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->text('description')->nullable();
             $table->double('predicted_value')->nullable();
             $table->double('spent_value')->nullable();
-
-
         });
     }
 
