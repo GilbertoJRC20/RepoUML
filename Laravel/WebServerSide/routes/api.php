@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TaskApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::get('/task/{task}', [TaskApiController::class, 'show']);
+Route::apiResource('/task', TaskApiController::class);

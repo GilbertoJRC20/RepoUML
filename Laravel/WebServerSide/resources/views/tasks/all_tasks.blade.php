@@ -42,17 +42,18 @@
 
         </thead>
 
+
         <tbody>
 
             @foreach ( $tasks as $key )
 
-          <tr>
-            <th scope="row">{{ $key->id }}</th>
-            <td>{{ $key->name }}</td>
-            <td>{{ $key->usname }}</td>
-            <td>{{ $key->description }}</td>
-            <td><a class="btn btn-info" href="{{route('tasks.edit',$key->id )}}">Ver / Editar</a></td>
-          </tr>
+                <tr>
+                    <th scope="row">{{ $key->id }}</th>
+                    <td>{{ $key->name }}</td>
+                    <td>{{ $key->usname }}</td>
+                    <td>{{ $key->description }}</td>
+                    <td><a class="btn btn-info" href="{{route('tasks.edit',$key->id )}}">Ver / Editar</a></td>
+                </tr>
 
             @endforeach
         </tbody>

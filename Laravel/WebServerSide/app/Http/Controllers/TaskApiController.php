@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Resources\TaskResource;
 use App\Http\Resources\TaskResourceCollection;
 
-class TaksApiController extends Controller
+class TaskApiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): TaskResourceCollection
     {
         return new TaskResourceCollection(resource: Task::paginate());
     }
@@ -74,6 +74,6 @@ class TaksApiController extends Controller
     {
         $task->delete($task);
 
-        return response()->json('task eliminada');
+        return response()->json('task apagada');
     }
 }

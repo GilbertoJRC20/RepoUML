@@ -37,23 +37,23 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Morada</label>
         <input name="address" value="{{ $user->address }}" type="text" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
         @error('address')
             erro de name
         @enderror
-    </div>
+    </div> -->
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Código Postal</label>
         <input name="zip_code" value="{{ $user->zip_code }}" type="text" class="form-control" id="exampleInputEmail1"
             aria-describedby="emailHelp">
         @error('zip_code')
             erro de name
         @enderror
-    </div>
+    </div> -->
 
     <div>
         <input type="file" name = "photo" accept="image/*" id = "">

@@ -13,10 +13,6 @@ Route::get('/', function () {
     return view ('welcome');
 })->name('home.welcome');
 
-Route::get('/hello/{name}', function ($name) {
-    return '<h2>Olá '.$name.'</h2>';
-})->name('home.hello');
-
 
 
 //"Links"
@@ -97,15 +93,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'] )
 
 //----------------------------------------------------------
 
-
 Route::get('/hello/{name}', function ($name) {
-        return '<h2>Olá '.$name.'</h2>';
+    return '<h2>Olá '.$name.'</h2>';
 });
 
 //rota fallback
 Route::fallback (function (){
     return view ('errors.fallback');
 });
-
-
-
