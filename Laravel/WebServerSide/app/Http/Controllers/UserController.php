@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -35,11 +36,10 @@ class UserController extends Controller
     }*/
 
 
-
     public function usersAll() {
 
 
-    $admin = User::TYPE_ADMIN;
+    //$admin = User::TYPE_ADMIN;
 
     $search = request()->query('search')?request()->query('search'):null;
 
@@ -49,6 +49,7 @@ class UserController extends Controller
         ->orWhere('email', 'LIKE', "%{$search}%")
         ->get();
     } else {
+        //query que busca todos os users
         $allUsers = DB::table('users')
         ->get();
     }
@@ -56,8 +57,6 @@ class UserController extends Controller
     return view ('users.all_users' , compact('allUsers'));
 
     }
-
-
 
 
 
@@ -127,21 +126,29 @@ class UserController extends Controller
 
 
 
-
     public function createUser(Request $request) {
 
         if(isset($request->id)) {
+            $photo = null;
+
             $request->validate([
                 'name' => 'string|max:25',
                 'address' => 'string|max:255',
                 'zip_code' => 'string',
             ]);
 
+
+            if($request->hasFile('photo')){
+                $photo = Storage::putFile('userPhotos/', $request->photo);
+            }
+
+
             User::where('id', $request->id)
             ->update([
                 'name' => $request->name,
                 'address' => $request->address,
                 'zip_code' => $request->zip_code,
+                'photo' => $photo,
             ]);
 
             return redirect()->route('users.all')->with('message', 'User atualizado com sucesso!');
@@ -166,8 +173,5 @@ class UserController extends Controller
         }
 
 
-
     }
-
 }
-

@@ -42,11 +42,11 @@ class TaskController extends Controller
         if(isset($request->id)){
             $request -> validate ([
                 'name' => 'required|string|max:20',
-                'description' => 'required|string\max:255',
+                'description' => 'required|string|max:255',
                 'due_at' => 'date',
             ]);
 
-            db::table('tasks')->where('id', $request->id)->update([
+            DB::table('tasks')->where('id', $request->id)->update([
                 'name' => $request->name,
                 'description' => $request->description,
                 'due_at' => $request->due_at,
