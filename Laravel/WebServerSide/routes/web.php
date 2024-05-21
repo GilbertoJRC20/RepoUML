@@ -86,7 +86,7 @@ Route::get('/delete-gifts/{id}', [GiftController::class, 'deleteGifts'] )
 
 //----------------------------------------------------------
 
-//dota ir para dashboard
+//rota ir para dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'] )
     ->name('dashboard');
 
