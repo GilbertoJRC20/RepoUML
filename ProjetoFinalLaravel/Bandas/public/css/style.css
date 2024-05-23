@@ -1,10 +1,14 @@
-*
-{
+* {
     background-color: wheat;
 }
 
 
-#bandas
- {
+#bandas {
+    color: crimson;
     font-size: 50px;
- }
+}
+
+#texto1 {
+    font-size: 20px;
+    color: brown;
+}

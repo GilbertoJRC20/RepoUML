@@ -36,6 +36,7 @@
             <th scope="col">Nome da Tarefa</th>
             <th scope="col">Responsável da Tarefa</th>
             <th scope="col">Descrição</th>
+            <th scope="col">Opção</th>
 
             {{-- <td><a href="{{route('users')}}" class="btn btn-success">Adicionar Tarefa</a></td> --}}
           </tr>
@@ -53,6 +54,7 @@
                     <td>{{ $key->usname }}</td>
                     <td>{{ $key->description }}</td>
                     <td><a class="btn btn-info" href="{{route('tasks.edit',$key->id )}}">Ver / Editar</a></td>
+                    <td><a class="btn btn-success" href="{{route('tasks.add_new')}}">Criar</a></td>
                 </tr>
 
             @endforeach

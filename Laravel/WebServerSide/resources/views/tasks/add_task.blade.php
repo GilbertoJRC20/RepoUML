@@ -4,7 +4,7 @@
 
 
     <h3>Adicionar Tarefa</h3>
-    <form  action="{{ route ('tasks.add_new') }}" method="POST">
+    <form  action="{{ route ('tasks.create') }}" method="POST">
         @csrf
 
         <div class="mb-3">

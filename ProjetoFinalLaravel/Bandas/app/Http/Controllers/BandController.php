@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\DB;
 class BandController extends Controller
 {
 
-    public function allBands() {
+    public function home() {
 
         $allBands = $this -> getAllBands();
 
-        return view('band.all_bands', compact ('allBands'));
+        return view('bands.home', compact ('allBands'));
 
     }
 

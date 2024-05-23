@@ -29,14 +29,14 @@ class TaskController extends Controller
     }
 
 
-    public function addTask(){
+    public function addNewTask(){
         $users = DB::table('users')
         ->get();
 
-        return view ('tasks.add_new', compact('users'));
+        return view ('tasks.add_task', compact('users'));
     }
 
-    public function addNewTask(Request $request) {
+    public function createTask(Request $request) {
 
         //if has an id, its an update
         if(isset($request->id)){
@@ -57,14 +57,14 @@ class TaskController extends Controller
 
             $request->validate([
                 'name' => 'string|max:20',
-                'task_description' => 'required|string|max:255',
+                'description' => 'required|string|max:255',
                 'users_id' => 'required|min:5'
             ]);
 
 
             DB::table('tasks')->insert ([
                 'name' => $request->name,
-                'task_description' => $request->task_description,
+                'description' => $request->description,
                 'users_id' => $request->user_id,
             ]);
 
