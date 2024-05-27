@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('user_type')->default(1)->after('email');
+        Schema::create('twenty_one_pilots', function (Blueprint $table) {
+            $table->id();
+            $table->string('nomeAlbum');
+            $table->string('capaAlbum');
+            $table->string('dataLancamento');
+            $table->integer('nMusicas');
         });
+
     }
 
     /**
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('user_type');
-        });
+        Schema::dropIfExists('twenty_one_pilots');
     }
 };

@@ -12,3 +12,7 @@
     font-size: 20px;
     color: brown;
 }
+
+header {
+    container: none;
+}

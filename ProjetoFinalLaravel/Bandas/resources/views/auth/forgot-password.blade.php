@@ -2,8 +2,7 @@
 
 @section('content')
 
-
-    <form method="POST" action="{{ route('password.email')}}">
+    <form method="POST" action="{{ route('password.email') }}">
         @csrf
 
         <div class="mb-3">
@@ -16,7 +15,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary">Enviar Email</button>
 
     </form>
 

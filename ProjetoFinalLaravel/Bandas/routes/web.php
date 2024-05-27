@@ -1,5 +1,7 @@
 <?php
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AlbumController;
+use Illuminate\Support\Facades\{Route};
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -7,7 +9,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->name('home.welcome');
 
 
 //----------------------------------------------------------
@@ -15,6 +17,12 @@ Route::get('/', function () {
 // Rota bandas
 Route::get('/home', [BandController::class, 'home'] )
     ->name('bands.home');
+
+//----------------------------------------------------------
+
+Route::get('/albuns', [AlbumController::class, 'albuns'] )
+    ->name('albuns.view');
+
 
 //----------------------------------------------------------
 

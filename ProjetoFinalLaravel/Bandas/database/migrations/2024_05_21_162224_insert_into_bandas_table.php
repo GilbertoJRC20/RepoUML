@@ -17,7 +17,7 @@ return new class extends Migration
             [
                 'nome' => 'Twenty One Pilots',
                 'foto' => 'https://www.gannett-cdn.com/-mm-/57e93c2cab508a13dc0572372cbae6624807c08c/c=510-0-2489-1488/local/-/media/2018/07/11/WIGroup/Milwaukee/636668965297534649-Twenty-One-Pilots---Main-Pub-2018---Brad-Heaton---Lo.jpg?width=960',
-                'nAlbuns' => '6'
+                'nAlbuns' => '7'
             ],
             [
                 'nome' => 'Metallica',

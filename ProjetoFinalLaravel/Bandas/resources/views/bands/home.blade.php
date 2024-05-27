@@ -37,7 +37,7 @@
         <td style="align-content: center">{{ $bands->nome }}</td>
         <td><img src="{{ $bands->foto }}" alt="{{ $bands->nome }}" width="200"></td>
         <td style="align-content: center">{{ $bands->nAlbuns }}</td>
-        <td style="align-content: center"><a class="btn btn-success">Ver Álbuns</a></td>
+        <td><a href="{{route('albuns.view', $bands->id)}}" class="btn btn-info">Ver</a></td>
 
 
       </tr>
